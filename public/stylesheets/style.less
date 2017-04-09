@@ -1,0 +1,143 @@
+body {
+  margin: auto;
+  width: 800px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.header{
+  margin-top:30px;
+  display: -webkit-flex;
+  display: flex;
+  width:100%;
+}
+
+.header .logo {
+  background:url(http://www.huagong.wang/file/upload/201611/25/113903631.gif) no-repeat top left;
+  width: 200px;
+  height: 70px;
+  -webkit-flex: none;
+  flex: none;
+}
+.header .search-box{
+  width:auto;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.header .search-box .inner-search-box{
+  padding:10px;
+  vertical-align: middle;
+  height:100%;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.header .search-box .inner-search-box .search-input{
+  -webkit-flex: 1;
+  flex: 1;
+  padding: 0 0 0 10px;
+  height: 30px;
+  line-height: 30px;
+  background: #fff;
+  border: 3px solid #ff6600;
+  font-size: 12px;
+  color: #b3b3b3;
+}
+.header .search-box .inner-search-box .searchBtn{
+  width:80px;
+  height: 36px;
+  background: #ff6600;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Microsoft Yahei";
+  font-size: 16px;
+  -webkit-flex: none;
+  flex: none;
+}
+
+.panel-header {
+  padding:0 10px 0 10px;
+  line-height:31px;
+  background:#EEEEEE url('../images/box_head_bg.gif') repeat-x;
+}
+
+.outline{
+  border: 1px solid lightgray;
+}
+.gap{
+  margin-bottom: 10px;
+}
+.inner-padding{
+  padding: 0 10px 10px;
+}
+
+.meta-box{
+  .outline;
+  .gap;
+}
+
+.meta-header{
+  .panel-header;
+}
+
+.meta-title h1{
+  height: 25px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: normal;
+  border-bottom: #F1F1F1 1px solid;
+}
+
+.meta-pic {
+  width:50%;
+  display:inline-block;
+  vertical-align: top
+}
+
+.meta-pic img{
+  width: 80%;
+  margin:auto;
+  display: block;
+}
+
+.meta-description{
+  width:50%;
+  display:inline-block;
+  vertical-align: top
+}
+
+.meta-description table tbody tr{
+  line-height: 30px;
+  vertical-align: top;
+  .meta-title{
+    color: #225588;
+    padding-right: 50px;
+  }
+  .price-highlight{
+    color: #FF6600;
+    font-weight: bold;
+  }
+}
+
+.content-box{
+  .outline;
+  .gap;
+}
+.meta{
+  .inner-padding;
+}
+
+.content-header{
+  .panel-header;
+}
+.content{
+  .inner-padding;
+}
+
+.sub-view{
+  margin-top: 30px;
+}
+a {
+  color: #00B7FF;
+}

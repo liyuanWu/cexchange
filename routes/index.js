@@ -4,7 +4,7 @@ var redis = require('../modules/database')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  redis.hkeys('hash key', function (err, replies) {
+  redis.hkeys('category', function (err, replies) {
     res.render('index', { title: 'All Items', items: replies });
   });
 });

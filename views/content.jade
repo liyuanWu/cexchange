@@ -1,5 +1,27 @@
 extends layout
 
 block content
-  h1= title
-  p #{content}
+  .meta-box.across-screen.center
+    .meta-header
+      span Meta
+    .meta
+      .meta-title
+        h1= title
+      .meta-detail
+        .meta-pic
+          img(src="http://www.huagong.wang/file/upload/201610/13/115709551283.jpg.middle.jpg")
+        .meta-description
+          table
+            tbody
+              for metaContent, metaTitle in metas
+                tr
+                  td.meta-title #{metaTitle}:
+                  if metaTitle == "Price"
+                    td.meta-content.price-highlight #{metaContent}
+                  else
+                    td.meta-content #{metaContent}
+  .content-box.across-screen.center
+    .content-header
+      span Description
+    .content
+      p #{content}

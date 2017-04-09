@@ -4,4 +4,11 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    .header.across-screen.align-left
+        a.logo(href="/")
+        .search-box
+          form.inner-search-box
+            input(type="text").search-input
+            input(type="submit", value="Search").searchBtn
+    .sub-view
+      block content

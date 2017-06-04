@@ -2,9 +2,11 @@ extends layout
 
 block content
   h1= title
+  form#new-item(method="post" action="/new")
+    input(type="submit" value="Add New Item" name="new" form="new-item")
   ul
-    for item in items
+    for name,id in items
       li
-        a(href="c/#{item}") #{item}
+        a(href="c/#{id}") #{name}
     else
       li sorry, no items!

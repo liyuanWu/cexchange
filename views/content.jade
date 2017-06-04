@@ -1,17 +1,21 @@
 extends layout
 
 block content
+  form#content-form(method="post")
   .meta-box.across-screen.center
     .meta-header
       span Meta
+      .editor-lock#editor-lock
+      .editor-unlock#editor-unlock.hidden
     .meta
       .meta-title
-        h1= title
+        .title-wrapper
+          input#title-editor.title-input(type="text" name="title" value="#{title}" form="content-form" readonly)
       .meta-detail
         .meta-pic
-          img(src="http://www.huagong.wang/file/upload/201610/13/115709551283.jpg.middle.jpg")
+          img(src=image)
         .meta-description
-          table
+          table#meta-description-table
             tbody
               for metaContent, metaTitle in metas
                 tr
@@ -20,8 +24,79 @@ block content
                     td.meta-content.price-highlight #{metaContent}
                   else
                     td.meta-content #{metaContent}
+          textarea.meta-editor#meta-editor.hidden(form="content-form" name="metas")
+            for metaContent, metaTitle in metas
+              |#{metaTitle}:#{metaContent}
+              = '\n'
   .content-box.across-screen.center
     .content-header
       span Description
     .content
-      p #{content}
+      #content-text
+        !{content}
+      .content-editor-wrapper
+        textarea#content-editor(form="content-form" name="content")
+
+
+
+  script(src="/javascripts/tinymce/tinymce.min.js")
+  script.
+    (function () {
+      var lock = document.getElementById("editor-lock");
+      var unlock = document.getElementById("editor-unlock");
+      var metaEditor = document.getElementById("meta-editor");
+      var metaDescription = document.getElementById("meta-description-table");
+      var titleEditor = document.getElementById("title-editor");
+      var contentForm = document.getElementById("content-form");
+
+      lock.addEventListener("click", function () {
+        unlock.classList.remove("hidden");
+        lock.className += ' hidden'
+        metaEditor.classList.remove("hidden");
+        metaDescription.className += " hidden";
+        titleEditor.removeAttribute("readonly");
+        titleEditor.className += " editable";
+
+        tinymce.init({
+          selector: '#content-editor',
+          plugins: ['autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+          ],
+          toolbar1: 'save | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+          toolbar2: 'print preview media | forecolor backcolor emoticons',
+          image_advtab: true,
+          save_onsavecallback: function () {
+            var contentText = document.getElementById("content-text");
+            contentText.innerHTML = this.getContent();
+          },
+          setup: function (editor) {
+            editor.on('init', function () {
+              var contentText = document.getElementById("content-text");
+              contentText.className += 'hidden'
+              this.setContent(contentText.innerHTML);
+            });
+          }
+        });
+      });
+
+
+      unlock.addEventListener("click", function () {
+        var contentText = document.getElementById("content-text");
+        contentText.classList.remove("hidden");
+        lock.classList.remove("hidden");
+        unlock.className += ' hidden'
+        metaEditor.className += " hidden";
+        metaDescription.classList.remove("hidden");
+        titleEditor.setAttribute("readonly", "true");
+        titleEditor.classList.remove("editable");
+
+        tinymce.get('content-editor').remove();
+
+        contentForm.submit();
+      });
+
+
+    })();
+

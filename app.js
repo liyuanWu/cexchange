@@ -9,6 +9,7 @@ var lessMiddleware = require('less-middleware');
 
 var index = require('./routes/index');
 var content = require('./routes/content');
+var newItem = require('./routes/new');
 var app = express();
 
 // view engine setup
@@ -26,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/c', content);
-
+app.use('/new', newItem);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

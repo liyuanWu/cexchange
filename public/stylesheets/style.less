@@ -1,3 +1,5 @@
+@import "../font-awesome/less/font-awesome";
+
 body {
   margin: auto;
   width: 800px;
@@ -81,12 +83,25 @@ body {
   .panel-header;
 }
 
-.meta-title h1{
-  height: 25px;
-  font-size: 18px;
+.meta-title .title-wrapper{
+  height: 30px;
   text-align: center;
   font-weight: normal;
   border-bottom: #F1F1F1 1px solid;
+}
+
+.meta-title .title-wrapper .title-input{
+  text-align: center;
+  background: transparent;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  padding: 0px 0px 0px 0px;
+}
+
+.meta-title .title-wrapper .editable{
+  color: #83A4C5;
+  border-bottom: 1px dashed #83A4C5;
 }
 
 .meta-pic {
@@ -99,6 +114,11 @@ body {
   width: 80%;
   margin:auto;
   display: block;
+}
+
+
+.meta-detail{
+  margin-top:15px;
 }
 
 .meta-description{
@@ -120,12 +140,51 @@ body {
   }
 }
 
+.meta-remove{
+  .fa;
+  .fa-times;
+}
+
+.meta-move-up{
+  .fa;
+  .fa-arrow-up;
+}
+
+.meta-move-down{
+  .fa;
+  .fa-arrow-down;
+}
+.meta-add-row {
+  .fa;
+  .fa-plus-circle
+}
+
+.meta-editor {
+  font-size:150%;
+  height:220px;
+  width:330px;
+}
 .content-box{
   .outline;
   .gap;
 }
 .meta{
   .inner-padding;
+}
+
+.meta-header .editor-lock{
+  float: right;
+  background-image: url(/images/lock.png);
+  width: 30px;
+  height: 30px;
+}
+
+
+.meta-header .editor-unlock{
+  float: right;
+  background-image: url(/images/unlock.png);
+  width: 30px;
+  height: 30px;
 }
 
 .content-header{
@@ -140,4 +199,17 @@ body {
 }
 a {
   color: #00B7FF;
+}
+
+#content-editor{
+  .hidden;
+}
+
+.content-editor-wrapper{
+  margin: 15px;
+}
+
+.hidden{
+  visibility: hidden;
+  display: none;
 }
